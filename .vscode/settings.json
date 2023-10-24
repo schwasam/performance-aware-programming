@@ -1,0 +1,25 @@
+{
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.scale": 2,
+  "extensions.ignoreRecommendations": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": false,
+  "files.trimTrailingWhitespace": true,
+  "workbench.startupEditor": "none",
+  "[markdown]": {
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false
+  }
+}
