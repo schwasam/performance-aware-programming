@@ -10,9 +10,9 @@
 
 - [x] 004 - Monday Q&A #1 (2023-02-05)
 
-- [ ] 005 - Single Instruction, Multiple Data (Simd)
+- [x] 005 - Single Instruction, Multiple Data (Simd)
 
-- [ ] 006 - Caching
+- [x] 006 - Caching
 
 - [ ] 007 - Monday Q&A #2 (2023-02-12)
 
