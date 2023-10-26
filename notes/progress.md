@@ -2,6 +2,8 @@
 
 ## Episodes
 
+### Prologue
+
 - [x] 001 - Welcome To The Performance-Aware Programming Series!
 
 - [x] 002 - Waste
@@ -14,13 +16,15 @@
 
 - [x] 006 - Caching
 
-- [ ] 007 - Monday Q&A #2 (2023-02-12)
+- [x] 007 - Monday Q&A #2 (2023-02-12)
 
-- [ ] 008 - Multithreading
+- [x] 008 - Multithreading
 
-- [ ] 009 - Python Revisited
+- [x] 009 - Python Revisited
 
-- [ ] 010 - Monday Q&A #3 (2023-02-20)
+- [x] 010 - Monday Q&A #3 (2023-02-20)
+
+### Part 1
 
 - [ ] 011 - The Haversine Distance Problem
 

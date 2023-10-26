@@ -107,4 +107,16 @@ u32 __attribute__((target("avx2"))) QuadAVXPtr(u32 Count, u32 *Input)
 CPU has multiple caches (L1, L2, L3) and access to memory (RAM).
 If data is small enough to fit in fast cache massive speedup is possible.
 
+## 009 - Python Revisited
+
+How to improve performance?
+
+- Reduce Waste
+- Increase IPC/ILP
+- Use SIMD
+- Use Cache
+- Use Multithreading
+
+For python: use something like cython to improve performance
+
 ## ?
