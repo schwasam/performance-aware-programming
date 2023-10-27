@@ -2,7 +2,7 @@
 
 ## Episodes
 
-### Prologue
+### Prologue: The Five Multipliers
 
 - [x] 001 - Welcome To The Performance-Aware Programming Series!
 
@@ -24,11 +24,13 @@
 
 - [x] 010 - Monday Q&A #3 (2023-02-20)
 
-### Part 1
+### Interlude
 
 - [x] 011 - The Haversine Distance Problem
 
 - [x] 012 - Clean Code, Horrible Performance
+
+### Part 1: Reading ASM
 
 - [ ] 013 - Instruction Decoding On The 8086
 
@@ -80,6 +82,8 @@
 
 - [ ] 037 - Monday Q&A #12 (2023-05-22)
 
+### Part 2: Basic Profiling
+
 - [ ] 038 - Generating Haversine Input Json
 
 - [ ] 039 - Monday Q&A #13 (2023-05-29)
@@ -119,6 +123,8 @@
 - [ ] 056 - Monday Q&A #21 (2023-07-31)
 
 - [ ] 057 - Q&A #22 (2023-08-15)
+
+### Part 3: Moving Data
 
 - [ ] 058 - Measuring Data Throughput
 
