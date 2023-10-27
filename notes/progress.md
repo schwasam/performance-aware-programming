@@ -26,9 +26,9 @@
 
 ### Part 1
 
-- [ ] 011 - The Haversine Distance Problem
+- [x] 011 - The Haversine Distance Problem
 
-- [ ] 012 - Clean Code, Horrible Performance
+- [x] 012 - Clean Code, Horrible Performance
 
 - [ ] 013 - Instruction Decoding On The 8086
 
