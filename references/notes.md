@@ -15,5 +15,6 @@
 - the REG field identifies a register that is one of the instruction operands (and is also used as an extension of the OPCODE for some instructions)
 - the R/M field identifies the register/memory (how effective address is calculated)
 
-| OPCODE | D   | W   | MOD | REG | R/M |
-| ------ | --- | --- | --- | --- | --- |
+| Field: | OPCODE | D   | W   | MOD | REG | R/M |
+| ------ | ------ | --- | --- | --- | --- | --- |
+| Bits:  | 6      | 1   | 1   | 2   | 3   | 3   |
