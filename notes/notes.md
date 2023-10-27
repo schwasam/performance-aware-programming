@@ -117,6 +117,120 @@ How to improve performance?
 - Use Cache
 - Use Multithreading
 
-For python: use something like cython to improve performance
+For Python: use something like Cython to improve performance
+
+```python
+# ========================================================================
+# LISTING 4 (Python with range) | 0.006 adds/cycle
+# ========================================================================
+
+def SingleScalar(Count, Input):
+    Sum = 0
+    for Index in range(0, Count):
+        Sum += Input[Index]
+    return Sum
+
+# ========================================================================
+# LISTING 16 (Python with for-in) | 0.008 adds/cycle
+# ========================================================================
+
+def SingleScalarNoRange(Count, Input):
+    Sum = 0
+    for Value in Input:
+        Sum += Value
+    return Sum
+
+# ========================================================================
+# LISTING 17 (Python with numpy) | 0.007 adds/cycle
+# ========================================================================
+
+import numpy
+def NumpySum(Count, Input):
+    return numpy.sum(Input)
+
+# ========================================================================
+# LISTING 18 (Python with built-in sum) | 0.06 adds/cycle
+# ========================================================================
+
+def BuiltinSum(Count, Input):
+    return sum(Input)
+
+# ========================================================================
+# LISTING 19 (Cython, with (automatically generated) Python wrapper) | 4.31 adds/cycle
+# ========================================================================
+
+def CythonSum(unsigned int TotalCount, array.array InputArray):
+    cdef unsigned int Count
+    cdef unsigned int *Input
+    cdef __m256i SumA, SumB, SumC, SumD
+    cdef __m256i SumAB, SumCD
+    cdef __m256i Sum, SumS
+
+    Input = InputArray.data.as_uints
+
+    SumA = _mm256_setzero_si256()
+    SumB = _mm256_setzero_si256()
+    SumC = _mm256_setzero_si256()
+    SumD = _mm256_setzero_si256()
+
+    Count = TotalCount >> 5
+    while Count != 0:
+        SumA = _mm256_add_epi32(SumA, _mm256_loadu_si256(<__m256i *>&Input[0]))
+        SumB = _mm256_add_epi32(SumB, _mm256_loadu_si256(<__m256i *>&Input[8]))
+        SumC = _mm256_add_epi32(SumC, _mm256_loadu_si256(<__m256i *>&Input[16]))
+        SumD = _mm256_add_epi32(SumD, _mm256_loadu_si256(<__m256i *>&Input[24]))
+
+        Input += 32
+        Count -= 1
+
+    SumAB = _mm256_add_epi32(SumA, SumB)
+    SumCD = _mm256_add_epi32(SumC, SumD)
+    Sum = _mm256_add_epi32(SumAB, SumCD)
+
+    Sum = _mm256_hadd_epi32(Sum, Sum)
+    Sum = _mm256_hadd_epi32(Sum, Sum)
+    SumS = _mm256_permute2x128_si256(Sum, Sum, 1 | (1 << 4))
+    Sum = _mm256_add_epi32(Sum, SumS)
+
+    return _mm256_cvtsi256_si32(Sum)
+
+# ========================================================================
+# LISTING 20 (Cython, without Python wrapper) | 4.38 adds/cycle
+# ========================================================================
+
+cdef unsigned int CythonSumC(unsigned int TotalCount, unsigned int *Input):
+    cdef unsigned int Count
+    cdef __m256i SumA, SumB, SumC, SumD
+    cdef __m256i SumAB, SumCD
+    cdef __m256i Sum, SumS
+
+    Count = TotalCount >> 5
+
+    SumA = _mm256_setzero_si256()
+    SumB = _mm256_setzero_si256()
+    SumC = _mm256_setzero_si256()
+    SumD = _mm256_setzero_si256()
+    while Count != 0:
+        SumA = _mm256_add_epi32(SumA, _mm256_loadu_si256(<__m256i *>&Input[0]));
+        SumB = _mm256_add_epi32(SumB, _mm256_loadu_si256(<__m256i *>&Input[8]));
+        SumC = _mm256_add_epi32(SumC, _mm256_loadu_si256(<__m256i *>&Input[16]));
+        SumD = _mm256_add_epi32(SumD, _mm256_loadu_si256(<__m256i *>&Input[24]));
+
+        Input += 32
+        Count -= 1
+
+    SumAB = _mm256_add_epi32(SumA, SumB)
+    SumCD = _mm256_add_epi32(SumC, SumD)
+    Sum = _mm256_add_epi32(SumAB, SumCD)
+
+    Sum = _mm256_hadd_epi32(Sum, Sum)
+    Sum = _mm256_hadd_epi32(Sum, Sum)
+    SumS = _mm256_permute2x128_si256(Sum, Sum, 1 | (1 << 4))
+    Sum = _mm256_add_epi32(Sum, SumS)
+
+    return _mm256_cvtsi256_si32(Sum)
+```
+
+The Cython versions vastly outperform the other options.
 
 ## ?
