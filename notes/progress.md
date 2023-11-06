@@ -32,7 +32,7 @@
 
 ### Part 1: Reading ASM
 
-- [ ] 013 - Instruction Decoding On The 8086
+- [x] 013 - Instruction Decoding On The 8086
 
 - [ ] 014 - Decoding Multiple Instructions And Suffixes
 
